@@ -13,7 +13,7 @@ Para esse projeto, além de mudarmos o JSON para o JSON Server, vamos permitir o
 
 **Print dos testes da API com Postman ou similar**
 
-<< COLOQUE A IMAGEM GET AQUI >>
+
 
 << COLOQUE A IMAGEM POST AQUI >>
 
@@ -23,7 +23,18 @@ Para esse projeto, além de mudarmos o JSON para o JSON Server, vamos permitir o
 
 **Print da aba NETWORK com requisições Fetch/XHR POST e GET**
 
-<<  COLOQUE A IMAGEM AQUI >>
+image.png
+
+### Como capturar o screenshot da aba NETWORK:
+
+1. Abra o navegador e acesse `http://localhost:3000/admin.html`
+2. Abra as Ferramentas de Desenvolvedor (F12 ou clique com botão direito > Inspecionar)
+3. Vá para a aba **NETWORK** (Rede)
+4. No formulário de administração, preencha os dados de um novo espetáculo
+5. Clique em "Cadastrar" para fazer uma requisição POST
+6. Na aba NETWORK, filtre por "Fetch/XHR" ou "XHR" para ver apenas as requisições AJAX
+7. Você verá as requisições GET (ao carregar a página) e POST (ao cadastrar)
+8. Tire um screenshot mostrando essas requisições com seus detalhes (status, URL, método, etc.)
 
 ## **Orientações Gerais**
 

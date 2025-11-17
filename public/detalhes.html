@@ -52,7 +52,7 @@
     <main class="container my-5">
         <article class="informações-espetaculo">
             <h2 id="espetaculo-titulo">O Lago dos Cisnes: conheça um dos ballets de repertório mais famosos do mundo</h2>
-            <img id="espetaculo-imagem" src="public/assets/Img/swan_lake.jpeg" alt="Cena do Lago dos Cisnes" class="img-fluid my-4">
+            <img id="espetaculo-imagem" src="assets/Img/swan_lake.jpeg" alt="Cena do Lago dos Cisnes" class="img-fluid my-4">
             <p id="espetaculo-resumo">Em 4 de março de 1877, um novo balé estreou no Teatro Bolshoi em Moscou – O Lago dos Cisnes. Esta foi a
                 primeira grande partitura de balé composta por Piotr Ilitch Tchaikovsky, que mais tarde escreveria e
                 comporia O Quebra-Nozes e A Bela Adormecida. Os críticos, no entanto, não se comoveram , e Tchaikovsky
@@ -139,9 +139,6 @@
         <div class="more-images">
             <h4>Mais imagens</h4>
             <div class="the-img" id="espetaculo-mais-imagens">
-                <img src="public/assets/Img/swan-lake/swanL1.jpg" alt="">
-                <img src="public/assets/Img/swan-lake/swanL2.jpg" alt="">
-                <img src="public/assets/Img/swan-lake/swanL3.jpg" alt="">
             </div>
 
         </div>
@@ -177,98 +174,11 @@
     </footer>
 
     <script src="assets/scripts/app.js"></script>
-    
     <script>
-        function getUrlParameter(name) {
-            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-            var results = regex.exec(location.search);
-            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-        }
-
-        function formatarTexto(texto) {
-            if (!texto) return '';
-            return texto.replace(/\s{2,}/g, '<br><br>');
-        }
-
-        
-        function carregarEspetaculo() {
-            var espetaculoId = parseInt(getUrlParameter('id')) || 1;
-
-            if (typeof dados === 'undefined' || !dados.espetaculos) {
-                console.error('Dados não encontrados. Certifique-se de que app.js está carregado.');
-                return;
-            }
-
-            var espetaculo = dados.espetaculos.find(function(e) {
-                return e.id === espetaculoId;
-            });
-
-            if (!espetaculo) {
-                console.warn('Espetáculo não encontrado. Usando o primeiro espetáculo como padrão.');
-                espetaculo = dados.espetaculos[0];
-            }
-
-            document.title = espetaculo.nome + ' - En Pointe';
-
-            var tituloElement = document.getElementById('espetaculo-titulo');
-            if (tituloElement) {
-                tituloElement.textContent = espetaculo.titulo;
-            }
-
-            var imagemElement = document.getElementById('espetaculo-imagem');
-            if (imagemElement) {
-                imagemElement.src = espetaculo.imagem;
-                imagemElement.alt = 'Cena de ' + espetaculo.nome;
-            }
-
-            var resumoElement = document.getElementById('espetaculo-resumo');
-            if (resumoElement) {
-                resumoElement.textContent = espetaculo.resumo;
-            }
-
-            var origensElement = document.getElementById('espetaculo-origens');
-            if (origensElement && espetaculo.origens) {
-                origensElement.innerHTML = formatarTexto(espetaculo.origens);
-            }
-
-            var tramaElement = document.getElementById('espetaculo-trama');
-            if (tramaElement && espetaculo.trama) {
-                tramaElement.innerHTML = formatarTexto(espetaculo.trama);
-            }
-
-            var coreografiaElement = document.getElementById('espetaculo-coreografia');
-            if (coreografiaElement && espetaculo.coreografia) {
-                coreografiaElement.innerHTML = formatarTexto(espetaculo.coreografia);
-            }
-
-            var legadoElement = document.getElementById('espetaculo-legado');
-            if (legadoElement && espetaculo.legado) {
-                legadoElement.innerHTML = formatarTexto(espetaculo.legado);
-            }
-
-            
-            var maisImagensElement = document.getElementById('espetaculo-mais-imagens');
-            if (maisImagensElement && espetaculo.mais_imagens && espetaculo.mais_imagens.length > 0) {
-                maisImagensElement.innerHTML = '';
-                espetaculo.mais_imagens.forEach(function(img) {
-                    if (img.imagem) {
-                        var imgElement = document.createElement('img');
-                        imgElement.src = img.imagem;
-                        imgElement.alt = espetaculo.nome;
-                        maisImagensElement.appendChild(imgElement);
-                    }
-                });
-            } else if (maisImagensElement) {
-                maisImagensElement.parentElement.style.display = 'none';
-            }
-        }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', carregarEspetaculo);
-        } else {
-            carregarEspetaculo();
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            const espetaculoId = parseInt(getUrlParameter('id')) || 1;
+            carregarEspetaculo(espetaculoId);
+        });
     </script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"

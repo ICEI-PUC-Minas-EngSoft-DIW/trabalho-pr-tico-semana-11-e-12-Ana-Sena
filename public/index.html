@@ -165,27 +165,9 @@
         
     </footer>
 
-    <script src="/public/assets/scripts/app.js"></script>
+    <script src="assets/scripts/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', carregaCards);
-        function carregaCards() {
-            const container = document.getElementById('cta-images');
-            const items = dados.espetaculos;    // usar o array correto
-            let strTextoHTML = '';
-
-            for (let i = 0; i < items.length; i++) {
-                const card = items[i];
-                strTextoHTML += `
-                    <div class="col-12 col-sm-6 col-md-4 text-center cta-item"> 
-                        <a href="detalhes.html?id=${card.id}">
-                            <img src="${card.imagem}" alt="${card.titulo}" class="img-fluid rounded">
-                        </a> 
-                        <div class="cta-text mt-2">${card.nome}</div>
-                    </div>`;
-            }
-
-            container.innerHTML = strTextoHTML;
-        }    
     </script>
     
     <!--slider script-->
